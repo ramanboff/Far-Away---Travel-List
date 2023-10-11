@@ -1,6 +1,12 @@
-const PackingList = () => {
+import Item from "./Item";
+
+const PackingList = ({initialItems}) => {
   return ( 
-   <div className="list">LiST</div>
+    <ul className="list">
+{initialItems.map((item) => (
+ <Item item={item} key={item.id}/>
+))}
+    </ul>
    );
 }
  
