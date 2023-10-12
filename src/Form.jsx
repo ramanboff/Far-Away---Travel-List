@@ -4,6 +4,7 @@ const Form = () => {
 
 const [description, setDescription] = useState("")
 const [quantity, setQuantity] = useState(1)
+const [items, setItems] = useState([])
 
 
 const handleSubmit = (e) => {
