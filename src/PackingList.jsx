@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-const PackingList = ({ initialItems, items, onDeleteItem }) => {
+const PackingList = ({ items, onDeleteItem }) => {
   return (
     <div className="list">
       <ul className="list">
