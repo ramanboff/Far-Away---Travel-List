@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-const Form = () => {
+const Form = ({onAddItems}) => {
 
 const [description, setDescription] = useState("")
 const [quantity, setQuantity] = useState(1)
-const [items, setItems] = useState([])
 
-function handleAddItems(item){
-setItems((items) => [...items, item])
-}
+
+
 
 const handleSubmit = (e) => {
 e.preventDefault()
@@ -17,7 +15,7 @@ if(!description) return;
 const newItem = {description,quantity,package:false, id:Date.now()}
 console.log(newItem)
 
-handleAddItems(newItem)
+onAddItems(newItem)
 
 setDescription("")
 setQuantity(1)
