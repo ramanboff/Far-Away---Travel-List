@@ -1,3 +1,4 @@
+
 const Logo = () => {
   return ( 
     <h1>🌴Far Away>💼</h1>
@@ -5,3 +6,4 @@ const Logo = () => {
 }
  
 export default Logo;
+
