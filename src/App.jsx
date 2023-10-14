@@ -5,29 +5,41 @@ import PackingList from "./PackingList";
 import Stats from "./Stats";
 
 function App() {
+  const [items, setItems] = useState([]);
 
-  const [items, setItems] = useState([])
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
 
+  function handleDelete(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
 
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
 
-  function handleAddItems(item){
-    setItems((items) => [...items, item])
-    }
+  const handleClearList = () => {
+    setItems([]);
+  };
 
-function handleDelete(id){
-  setItems((items) => items.filter((item) => item.id !== id) )
-}
-
-function handleToggleItem(id){
-setItems((items) => items.map((item) => item.id === id? {...item, packed:!item.packed} : item))
-}
-  
-  return <div className="app">
-    <Logo/>
-    <Form setItems={setItems} onAddItems={handleAddItems}/>
-    <PackingList  items={items} onDeleteItem={handleDelete} onToggleItem={handleToggleItem}/>
-    <Stats items={items}/>
-  </div>;
+  return (
+    <div className="app">
+      <Logo />
+      <Form setItems={setItems} onAddItems={handleAddItems} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDelete}
+        onToggleItem={handleToggleItem}
+        onClearList={handleClearList}
+      />
+      <Stats items={items} />
+    </div>
+  );
 }
 
 export default App;
